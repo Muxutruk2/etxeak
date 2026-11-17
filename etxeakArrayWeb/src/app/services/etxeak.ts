@@ -107,4 +107,14 @@ export class Etxeak {
       laundry: true,
     },
   ];
+
+  guztiak():Etxea[]{
+    return this.etxeak
+  }
+
+  bat(id: string){
+    return this.etxeak.find(e => e.id === id)
+  }
 }
+
+
