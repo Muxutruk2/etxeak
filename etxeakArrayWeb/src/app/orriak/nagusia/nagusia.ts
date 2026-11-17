@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { EtxeakItem } from '../../etxeak/etxeak-item/etxeak-item';
 import { Etxea } from '../../models/etxeak';
+import { Etxeak } from '../../services/etxeak';
 
 @Component({
   imports: [EtxeakItem],
@@ -19,4 +20,7 @@ export class Nagusia {
     wifi: true,
     laundry: false,
   };
+
+
+  etxeZerrenda = inject(Etxeak)
 }

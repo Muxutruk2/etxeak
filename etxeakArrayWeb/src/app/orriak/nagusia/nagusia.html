@@ -5,5 +5,9 @@
   </form>
 </section>
 <section class="results">
-  <app-etxeak-item [etxea]="testEtxea"></app-etxeak-item>
+
+
+  @for(etxea of etxeZerrenda.guztiak(); track etxea.id){
+  <app-etxeak-item [etxea]="etxea"></app-etxeak-item>
+  }
 </section>
