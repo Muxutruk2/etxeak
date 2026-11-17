@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,4 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './xehetasuna.css',
   templateUrl: './xehetasuna.html',
 })
-export class Xehetasuna {}
+export class Xehetasuna {
+  private route = inject(ActivatedRoute)
+  id = this.route.snapshot.paramMap.get("id")
+}
