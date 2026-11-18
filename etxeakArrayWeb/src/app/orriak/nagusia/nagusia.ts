@@ -10,4 +10,8 @@ import { EtxeakZerrenda } from '../../etxeak/etxeak-zerrenda/etxeak-zerrenda';
 })
 export class Nagusia {
   etxeakService = inject(Etxeak);
+  // Testu-sarrera bat eta «Bilatu» botoia zerrendaren gainean.
+  // Hiriaren izenean testua duten etxeak bakarrik erakutsi. Maiuskulek eta minuskulek berdin dute: «chica» idatzita, Chicago aurkitu behar da.
+  // Testua hutsik badago, etxe guztiak.
+  // Etxeen zerrenda osoa ez da galdu behar: bilaketa batetik bestera, etxe guztien artean bilatzen da.
 }
