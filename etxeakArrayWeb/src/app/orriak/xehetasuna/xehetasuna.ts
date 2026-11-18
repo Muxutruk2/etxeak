@@ -1,10 +1,23 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Etxeak } from '../../services/etxeak';
+
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-xehetasuna',
   styleUrl: './xehetasuna.css',
   templateUrl: './xehetasuna.html',
 })
-export class Xehetasuna {}
+export class Xehetasuna {
+
+etxeakService = inject(Etxeak)
+
+private route = inject(ActivatedRoute);
+id = this.route.snapshot.paramMap.get('id');
+
+etxea = this.id ? this.etxeakService.bat(this.id) : undefined;
+
+
+
+}
