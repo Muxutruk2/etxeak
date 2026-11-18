@@ -7,7 +7,4 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './xehetasuna.css',
   templateUrl: './xehetasuna.html',
 })
-export class Xehetasuna {
-  private route = inject(ActivatedRoute)
-  id = this.route.snapshot.paramMap.get("id")
-}
+export class Xehetasuna {}
