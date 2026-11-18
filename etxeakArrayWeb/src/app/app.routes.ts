@@ -4,7 +4,7 @@ import { Nagusia } from './orriak/nagusia/nagusia';
 
 export const routes: Routes = [
   { path: "", component: Nagusia,
-  title: 'Xehetasuna' },
+  title: 'Zerrenda' },
   { path: "xehetasuna/:id", component: Xehetasuna,
   title: 'Xehetasuna' }
 

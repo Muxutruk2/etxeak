@@ -2,9 +2,10 @@ import { Component, inject } from '@angular/core';
 import { EtxeakItem } from '../../etxeak/etxeak-item/etxeak-item';
 import { Etxea } from '../../models/etxeak';
 import { Etxeak } from '../../services/etxeak';
+import { EtxeakZerrenda } from '../../etxeak/etxeak-zerrenda/etxeak-zerrenda';
 
 @Component({
-  imports: [EtxeakItem],
+  imports: [EtxeakItem, EtxeakZerrenda],
   selector: 'app-nagusia',
   styleUrl: './nagusia.css',
   templateUrl: './nagusia.html',
@@ -22,5 +23,5 @@ export class Nagusia {
   };
 
 
-  etxeZerrenda = inject(Etxeak)
+  etxeakService = inject(Etxeak)
 }
