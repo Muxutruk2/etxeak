@@ -115,6 +115,13 @@ export class Etxeak {
   bat(id: string){
     return this.etxeak.find(e => e.id === id)
   }
+
+  bilatu(izena : string):Etxea[]{
+      const inputIzena = izena.trim().toLowerCase()
+      if(!inputIzena) return this.etxeak
+      return this.etxeak.filter(e =>
+      e.name.toLowerCase().includes(inputIzena));
+  }
 }
 
 

@@ -9,5 +9,6 @@ import { EtxeakItem } from '../etxeak-item/etxeak-item';
   templateUrl: './etxeak-zerrenda.html',
 })
 export class EtxeakZerrenda {
+  
   etxeak = input.required<Etxea[]>();
 }

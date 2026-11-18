@@ -1,7 +1,7 @@
 <section>
   <form>
-    <input type="text" placeholder="Hiriaren arabera iragazi" />
-    <button class="primary" type="button">Bilatu</button>
+    <input type="text" name="bilaketa" placeholder="Hiriaren arabera iragazi" [(ngModel)]="etxeInput" />
+    <button class="primary" type="button" (click)="etxeakService.bilatu(etxeInput())">Bilatu</button>
   </form>
 </section>
 <section class="results">
