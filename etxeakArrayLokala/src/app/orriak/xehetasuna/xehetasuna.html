@@ -1,0 +1,22 @@
+<article>
+  @if (etxea; as etxea) {
+  <img class="listing-photo" [src]="etxea.photo" alt="Exterior photo of {{ etxea.name }}" crossorigin />
+  <section class="listing-description">
+    <h2 class="listing-heading">{{ etxea.name }}</h2>
+    <p class="listing-location">{{ etxea.city }}, {{ etxea.state }}</p>
+  </section>
+  <section class="listing-features">
+    <h2 class="section-heading">About this housing location</h2>
+    <ul>
+      <li>Units available: {{ etxea.availableUnits }}</li>
+      <li>Does this location have wifi: {{ etxea.wifi }}</li>
+      <li>Does this location have laundry: {{ etxea.laundry }}</li>
+    </ul>
+  </section>
+  } @else {
+  <section class="listing-description">
+    <h2 class="listing-heading">Etxe hori ez da existitzen</h2>
+    <a [routerLink]="['/']">Orri nagusira</a>
+  </section>
+  }
+</article>

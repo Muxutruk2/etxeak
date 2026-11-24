@@ -1,0 +1,9 @@
+<section>
+  <form>
+    <input type="text" name="bilaketa" placeholder="Hiriaren arabera iragazi" [(ngModel)]="etxeInput" />
+    <button class="primary" type="button" (click)="bilatu()">Bilatu</button>
+  </form>
+</section>
+<section class="results">
+  <app-etxeak-zerrenda style="display: contents;" [etxeak]="etxeak" ></app-etxeak-zerrenda>
+</section>
