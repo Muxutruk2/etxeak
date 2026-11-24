@@ -43,9 +43,24 @@ export class Xehetasuna {
   abizena: string = '';
   emaila: string = '';
 
+  formularioBaliozkoa: boolean = false;
+
+  formularioaKonprobatu() {
+
+    const emailaZuzena = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.emaila);
+
+    if( this.izena.trim() !== '' && this.abizena.trim() !== '' && emailaZuzena){
+        this.formularioBaliozkoa = true;
+        
+    } else{
+      this.formularioBaliozkoa = false;
+    }
+  }
+
   interesatuak: Interesatua[] = []
 
   bidali(id : string){
+
     const interesatua = {
       izena: this.izena,
       abizena: this.abizena,
