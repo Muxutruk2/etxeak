@@ -18,6 +18,21 @@
       <li>Does this location have laundry: {{ etxea.laundry }}</li>
     </ul>
   </section>
+
+  <h1>Interesatzen bazaizu...:</h1>
+  <form>
+    <label name= "izena">Izena:</label>
+    <input type="text" name="izena" placeholder="Izena idatzi" [(ngModel)]="izena" required />
+
+    <label name= "abizena">Abizena:</label>
+    <input type="text" name="abizena" placeholder="Abizena idatzi" [(ngModel)]="abizena" required />
+
+    <label name= "emaila">Emaila:</label>
+    <input type="email" name="emaila" placeholder="Emaila idatzi" [(ngModel)]="emaila" required /> 
+
+    <button  type="button" (click)=" bidali(etxea.id)">Bidali</button>
+  </form>
+  
   } @else {
   <section class="listing-description">
     <h2 class="listing-heading">Etxe hori ez da existitzen</h2>
@@ -26,3 +41,5 @@
   }
    }
 </article>
+
+

@@ -3,9 +3,11 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Etxeak } from '../../services/etxeak';
 import { Etxea } from '../../models/etxeak';
 import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { Interesatua } from '../../models/interesatuak';
 
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink,FormsModule],
   selector: 'app-xehetasuna',
   styleUrl: './xehetasuna.css',
   templateUrl: './xehetasuna.html',
@@ -35,4 +37,29 @@ export class Xehetasuna {
       });
     }
   }
+
+  // Interesatuen atala
+  izena: string = '';
+  abizena: string = '';
+  emaila: string = '';
+
+  interesatuak: Interesatua[] = []
+
+  bidali(id : string){
+    const interesatua = {
+      izena: this.izena,
+      abizena: this.abizena,
+      emaila: this.emaila,
+      etxeaId: id
+    
+    };
+
+    this.interesatuak.push(interesatua)
+    localStorage.setItem( 'interesatuak', JSON.stringify(this.interesatuak));
+
+    this.izena = '';
+    this.abizena = '';
+    this.emaila = '';
+  }
+
 }
