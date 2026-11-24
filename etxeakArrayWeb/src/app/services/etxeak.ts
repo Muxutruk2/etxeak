@@ -120,7 +120,7 @@ export class Etxeak {
       const inputIzena = izena.trim().toLowerCase()
       if(!inputIzena) return this.etxeak
       return this.etxeak.filter(e =>
-      e.name.toLowerCase().includes(inputIzena));
+      e.city.toLowerCase().includes(inputIzena));
   }
 }
 

@@ -1,9 +1,9 @@
 <section>
   <form>
     <input type="text" name="bilaketa" placeholder="Hiriaren arabera iragazi" [(ngModel)]="etxeInput" />
-    <button class="primary" type="button" (click)="etxeakService.bilatu(etxeInput())">Bilatu</button>
+    <button class="primary" type="button" (click)="bilatu()">Bilatu</button>
   </form>
 </section>
 <section class="results">
-  <app-etxeak-zerrenda style="display: contents;" [etxeak]="etxeakService.guztiak()" ></app-etxeak-zerrenda>
+  <app-etxeak-zerrenda style="display: contents;" [etxeak]="etxeak" ></app-etxeak-zerrenda>
 </section>
