@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Etxea } from '../../models/etxeak';
 
 @Component({
-  imports: [EtxeakZerrenda,FormsModule],
+  imports: [EtxeakZerrenda, FormsModule],
   selector: 'app-nagusia',
   styleUrl: './nagusia.css',
   templateUrl: './nagusia.html',
@@ -17,14 +17,28 @@ export class Nagusia {
   // Testua hutsik badago, etxe guztiak.
   // Etxeen zerrenda osoa ez da galdu behar: bilaketa batetik bestera, etxe guztien artean bilatzen da.
 
-  etxeInput = signal<string>("")
-  etxeak: Etxea[] = []
+  etxeInput = signal<string>('');
+  etxeak = signal<Etxea[]>([]);
 
-  constructor(){
-    this.etxeak = this.etxeakService.etxeak
+  constructor() {
+    this.etxeakService.bilatu(this.etxeInput()).subscribe({
+      next: (data) => {
+        this.etxeak.set(data);
+      },
+      error: (e) => {
+        console.error(e);
+      },
+    });
   }
 
-  bilatu(){
-   this.etxeak =  this.etxeakService.bilatu(this.etxeInput())
+  bilatu() {
+    this.etxeakService.bilatu(this.etxeInput()).subscribe({
+      next: (data) => {
+        this.etxeak.set(data);
+      },
+      error: (e) => {
+        console.error(e);
+      },
+    });
   }
 }
