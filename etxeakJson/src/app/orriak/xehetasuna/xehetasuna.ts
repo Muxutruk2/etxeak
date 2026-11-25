@@ -1,4 +1,4 @@
-import { Component, inject, signal,computed } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Etxeak } from '../../services/etxeak';
 import { Etxea } from '../../models/etxeak';
@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { Interesatua } from '../../models/interesatuak';
 
 @Component({
-  imports: [RouterLink,FormsModule],
+  imports: [RouterLink, FormsModule],
   selector: 'app-xehetasuna',
   styleUrl: './xehetasuna.css',
   templateUrl: './xehetasuna.html',
@@ -40,35 +40,38 @@ export class Xehetasuna {
 
   // Interesatuen atala
 
-  izena = signal<string>('')
-  abizena = signal<string>('')
-  emaila= signal<string>('')
+  izena = signal<string>('');
+  abizena = signal<string>('');
+  emaila = signal<string>('');
 
-
-
-  formularioBaliozkoa = computed(() => {let emailaZuzena = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.emaila());
+  formularioBaliozkoa = computed(() => {
+    let emailaZuzena = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.emaila());
     return this.izena().trim() !== '' && this.abizena().trim() !== '' && emailaZuzena;
   });
 
+  interesatuak: Interesatua[] = JSON.parse(localStorage.getItem('interesatuak') || '[]');
 
-  interesatuak: Interesatua[] = []
-
-  bidali(id : string){
-
+  bidali(id: string) {
     const interesatua = {
       izena: this.izena(),
       abizena: this.abizena(),
       emaila: this.emaila(),
-      etxeaId: id
-
+      etxeaId: id,
     };
 
-    this.interesatuak.push(interesatua)
-    localStorage.setItem( 'interesatuak', JSON.stringify(this.interesatuak));
+    this.interesatuak.push(interesatua);
+    localStorage.setItem('interesatuak', JSON.stringify(this.interesatuak));
 
     this.izena.set('');
     this.abizena.set('');
     this.emaila.set('');
   }
 
+  interesatuakFiltratua = computed(() => {
+    let idEtxea = this.etxea()?.id;
+    if (idEtxea) {
+      return this.interesatuak.filter((i) => i.etxeaId == idEtxea);
+    }
+    return [];
+  });
 }

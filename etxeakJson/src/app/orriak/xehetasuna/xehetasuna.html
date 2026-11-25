@@ -21,7 +21,7 @@
 
   <h1>Interesatzen bazaizu...:</h1>
   <form>
-    <!-- TODO: Kendu ngModelChange -->
+
     <label name="izena">Izena:</label>
     <input type="text" name="izena" placeholder="Izena idatzi" [(ngModel)]="izena" required/>
 
@@ -33,6 +33,13 @@
 
     <button type="button" (click)=" bidali(etxea.id)" [disabled]="!formularioBaliozkoa()">Bidali</button>
     </form>
+
+    <h1>Interesaturn zerrenda</h1>
+    <ul>
+      @for (interesatua of  interesatuakFiltratua(); track interesatua.izena){
+        <li>{{interesatua.emaila}}</li>
+      }
+    </ul>
 
   } @else {
   <section class="listing-description">
