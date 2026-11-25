@@ -34,10 +34,12 @@
     <button type="button" (click)=" bidali(etxea.id)" [disabled]="!formularioBaliozkoa()">Bidali</button>
     </form>
 
-    <h1>Interesaturn zerrenda</h1>
+    <h1>Interesatuen zerrenda</h1>
     <ul>
       @for (interesatua of  interesatuakFiltratua(); track interesatua.izena){
         <li>{{interesatua.emaila}}</li>
+      }@empty {
+        <p style="color: orange;">Ez dago interesaturik. Izan zaitez lehena!</p>
       }
     </ul>
 

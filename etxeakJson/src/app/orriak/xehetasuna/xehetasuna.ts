@@ -49,7 +49,8 @@ export class Xehetasuna {
     return this.izena().trim() !== '' && this.abizena().trim() !== '' && emailaZuzena;
   });
 
-  interesatuak: Interesatua[] = JSON.parse(localStorage.getItem('interesatuak') || '[]');
+
+  interesatuak = signal<Interesatua[]>(JSON.parse(localStorage.getItem('interesatuak') || '[]'))
 
   bidali(id: string) {
     const interesatua = {
@@ -59,8 +60,8 @@ export class Xehetasuna {
       etxeaId: id,
     };
 
-    this.interesatuak.push(interesatua);
-    localStorage.setItem('interesatuak', JSON.stringify(this.interesatuak));
+    this.interesatuak.update((zaharra) => [...zaharra, interesatua]);
+    localStorage.setItem('interesatuak', JSON.stringify(this.interesatuak()));
 
     this.izena.set('');
     this.abizena.set('');
@@ -70,7 +71,7 @@ export class Xehetasuna {
   interesatuakFiltratua = computed(() => {
     let idEtxea = this.etxea()?.id;
     if (idEtxea) {
-      return this.interesatuak.filter((i) => i.etxeaId == idEtxea);
+      return this.interesatuak().filter((i) => i.etxeaId == idEtxea);
     }
     return [];
   });
