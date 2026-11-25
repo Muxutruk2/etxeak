@@ -39,10 +39,12 @@ export class Xehetasuna {
   }
 
   // Interesatuen atala
+  // TODO: Bihurtu signal
   izena: string = '';
   abizena: string = '';
   emaila: string = '';
 
+  // TODO: Bihurtu computed()
   formularioBaliozkoa: boolean = false;
 
   formularioaKonprobatu() {
@@ -51,7 +53,7 @@ export class Xehetasuna {
 
     if( this.izena.trim() !== '' && this.abizena.trim() !== '' && emailaZuzena){
         this.formularioBaliozkoa = true;
-        
+
     } else{
       this.formularioBaliozkoa = false;
     }
@@ -66,7 +68,7 @@ export class Xehetasuna {
       abizena: this.abizena,
       emaila: this.emaila,
       etxeaId: id
-    
+
     };
 
     this.interesatuak.push(interesatua)
