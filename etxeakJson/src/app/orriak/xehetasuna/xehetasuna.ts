@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal,computed } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Etxeak } from '../../services/etxeak';
 import { Etxea } from '../../models/etxeak';
@@ -39,34 +39,26 @@ export class Xehetasuna {
   }
 
   // Interesatuen atala
-  // TODO: Bihurtu signal
-  izena: string = '';
-  abizena: string = '';
-  emaila: string = '';
 
-  // TODO: Bihurtu computed()
-  formularioBaliozkoa: boolean = false;
+  izena = signal<string>('')
+  abizena = signal<string>('')
+  emaila= signal<string>('')
 
-  formularioaKonprobatu() {
 
-    const emailaZuzena = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.emaila);
 
-    if( this.izena.trim() !== '' && this.abizena.trim() !== '' && emailaZuzena){
-        this.formularioBaliozkoa = true;
+  formularioBaliozkoa = computed(() => {let emailaZuzena = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.emaila());
+    return this.izena().trim() !== '' && this.abizena().trim() !== '' && emailaZuzena;
+  });
 
-    } else{
-      this.formularioBaliozkoa = false;
-    }
-  }
 
   interesatuak: Interesatua[] = []
 
   bidali(id : string){
 
     const interesatua = {
-      izena: this.izena,
-      abizena: this.abizena,
-      emaila: this.emaila,
+      izena: this.izena(),
+      abizena: this.abizena(),
+      emaila: this.emaila(),
       etxeaId: id
 
     };
@@ -74,9 +66,9 @@ export class Xehetasuna {
     this.interesatuak.push(interesatua)
     localStorage.setItem( 'interesatuak', JSON.stringify(this.interesatuak));
 
-    this.izena = '';
-    this.abizena = '';
-    this.emaila = '';
+    this.izena.set('');
+    this.abizena.set('');
+    this.emaila.set('');
   }
 
 }

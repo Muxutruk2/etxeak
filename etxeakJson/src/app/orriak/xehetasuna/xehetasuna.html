@@ -23,19 +23,16 @@
   <form>
     <!-- TODO: Kendu ngModelChange -->
     <label name="izena">Izena:</label>
-    <input type="text" name="izena" placeholder="Izena idatzi" [(ngModel)]="izena" required
-      (ngModelChange)="formularioaKonprobatu()" />
+    <input type="text" name="izena" placeholder="Izena idatzi" [(ngModel)]="izena" required/>
 
     <label name="abizena">Abizena:</label>
-    <input type="text" name="abizena" placeholder="Abizena idatzi" [(ngModel)]="abizena" required
-      (ngModelChange)="formularioaKonprobatu()" />
+    <input type="text" name="abizena" placeholder="Abizena idatzi" [(ngModel)]="abizena" required/>
 
     <label name="emaila">Emaila:</label>
-    <input type="email" name="emaila" placeholder="Emaila idatzi" [(ngModel)]="emaila" required
-      (ngModelChange)="formularioaKonprobatu()" />
+    <input type="email" name="emaila" placeholder="Emaila idatzi" [(ngModel)]="emaila" required/>
 
-    <button type="button" (click)=" bidali(etxea.id)" [disabled]="!formularioBaliozkoa">Bidali</button>
-  </form>
+    <button type="button" (click)=" bidali(etxea.id)" [disabled]="!formularioBaliozkoa()">Bidali</button>
+    </form>
 
   } @else {
   <section class="listing-description">
